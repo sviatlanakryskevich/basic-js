@@ -6,19 +6,27 @@ const { NotImplementedError } = require('../extensions/index.js');
  * @param {Array<Array>} matrix 
  * @return {Number} count of cats found
  *
- * @example
- * countCats([
- *  [0, 1, '^^'],
- *  [0, '^^', 2],
- *  ['^^', 1, 2]
- * ]) => 3`
+ @example
+countCats([
+[0, 1, '^^'],
+[0, '^^', 2],
+['^^', 1, 2]
+]) => 3`
  *
  */
-function countCats(/* matrix */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function countCats(matrix) {
+    let arr = [];
+    for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix[i].length; j++) {
+            if (matrix[i][j] == '^^') {
+                arr.push(matrix[i][j]);
+            }
+        }
+    }
+    const counter = arr.length;
+    return counter;
 }
 
 module.exports = {
-  countCats
+    countCats
 };
