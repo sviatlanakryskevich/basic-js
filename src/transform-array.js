@@ -28,26 +28,27 @@ function transform(arr) {
                 transformarr.push(arr[i + 1]);
             }
         } else if (arr[i] === '--double-prev') {
-            if (i !== arr.length - 1 - i) {
+            if (i !== 0 && arr[i - 2] !== '--discard-next') {
                 transformarr.push(arr[i - 1]);
             }
         } else if (arr[i] === '--discard-prev') {
-            if (i !== arr.length - 1 - i) {
-                transformarr.pop(arr[i - 1]);
+            if (i !== 0 && arr[i - 2] !== '--discard-next') {
+                transformarr.pop();
             }
         } else if (arr[i] === '--discard-next') {
             if (i !== arr.length - 1) {
-                transformarr.pop(arr[i + 1]);
+                i++;
             }
         } else {
             transformarr.push(arr[i]);
         }
     }
     console.log(transformarr);
+    return transformarr;
 }
 
 // transform([1, 2, 3, '--double-next', 4, 5]);
-// transform([1, 2, 3, '--discard-prev', 4, 5]);
+transform(['--discard-prev', 1, 2, 3, 4, 5]);
 
 module.exports = {
     transform
